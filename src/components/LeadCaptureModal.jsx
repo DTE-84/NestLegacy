@@ -39,22 +39,13 @@ const LeadCaptureModal = ({ isOpen, onClose, source }) => {
           <div className="panel-content">
             <div className="profile-image-container">
               <div className="profile-frame">
-                <img 
-                  src="/profile.png" 
-                  alt="Andrew Waggoner" 
-                  className="profile-img"
-                  onError={(e) => {
-                    e.target.style.display = 'none';
-                    e.target.nextSibling.style.display = 'flex';
-                  }}
-                />
-                <div className="profile-fallback" style={{ display: 'none' }}>
+                <div className="profile-fallback" style={{ display: 'flex' }}>
                   <User size={60} color="var(--gold)" />
                 </div>
               </div>
               <div className="profile-status-ring"></div>
             </div>
-            <h2 className="panel-title">Andrew Waggoner</h2>
+            <h2 className="panel-title">Fiduciary Consultant</h2>
             <p className="panel-subtitle">Principal Fiduciary Consultant</p>
             <div className="panel-bio">
               <p>Specializing in high-fidelity wealth preservation and behavioral acquisition systems. With a dual foundation in Strategic Communication and Financial Engineering, I bridge the trust gap between complex wealth events and expert fiduciary guidance.</p>

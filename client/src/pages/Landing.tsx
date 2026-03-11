@@ -22,7 +22,7 @@ export default function Landing() {
               W
             </div>
             <div>
-              <h1 className="font-serif font-bold text-lg text-emerald-950 leading-none">Waggoner</h1>
+              <h1 className="font-serif font-bold text-lg text-emerald-950 leading-none">The Trust</h1>
               <p className="text-[10px] font-bold uppercase tracking-widest text-slate-500">Wealth Management</p>
             </div>
           </div>
