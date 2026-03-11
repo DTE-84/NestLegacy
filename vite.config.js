@@ -6,6 +6,13 @@ export default defineConfig({
   plugins: [react()],
   optimizeDeps: {
     include: ['react', 'react-dom']
+  },
+  server: {
+    middlewareMode: false,
+    mimeTypes: {
+      '.jsx': 'application/javascript',
+      '.js': 'application/javascript'
+    }
   }
 })
 
