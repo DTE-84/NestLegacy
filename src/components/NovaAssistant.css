@@ -1,0 +1,322 @@
+.nova-assistant-container {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  z-index: 10000;
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* Trigger Button */
+.nova-trigger {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, var(--deep-blue) 0%, var(--navy) 100%);
+  border: 1px solid var(--gold);
+  border-radius: 50px;
+  color: var(--cream);
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 0 4px rgba(212, 175, 55, 0.1);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: visible;
+}
+
+.nova-trigger:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), 0 0 0 6px rgba(212, 175, 55, 0.2);
+  border-color: var(--light-gold);
+}
+
+.nova-pulse {
+  position: absolute;
+  top: 50%;
+  left: 28px;
+  width: 12px;
+  height: 12px;
+  background: var(--gold);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: pulse-ring 2s infinite;
+  pointer-events: none;
+}
+
+@keyframes pulse-ring {
+  0% { transform: translate(-50%, -50%) scale(0.5); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(2.5); opacity: 0; }
+}
+
+.nova-icon {
+  width: 32px;
+  height: 32px;
+  background: var(--gold);
+  color: var(--navy);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  z-index: 2;
+}
+
+.nova-label {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  font-size: 0.95rem;
+}
+
+/* Assistant Window */
+.nova-window {
+  width: 400px;
+  height: 600px;
+  background: var(--navy);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 20px 80px rgba(0, 0, 0, 0.5);
+  animation: slide-up 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes slide-up {
+  from { transform: translateY(30px) scale(0.95); opacity: 0; }
+  to { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+.nova-header {
+  padding: 20px 24px;
+  background: linear-gradient(90deg, var(--deep-blue) 0%, var(--navy) 100%);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nova-header-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nova-avatar {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, var(--gold) 0%, #B8941F 100%);
+  color: var(--navy);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+}
+
+.nova-header h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  color: var(--light-gold);
+  margin: 0;
+}
+
+.nova-status {
+  font-size: 0.75rem;
+  color: var(--emerald);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.nova-status::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: var(--emerald);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--emerald);
+}
+
+.nova-close {
+  background: transparent;
+  border: none;
+  color: var(--steel);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 4px;
+  transition: color 0.2s;
+}
+
+.nova-close:hover {
+  color: var(--gold);
+}
+
+.nova-messages {
+  flex: 1;
+  padding: 24px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--deep-blue) transparent;
+}
+
+.nova-messages::-webkit-scrollbar {
+  width: 4px;
+}
+
+.nova-messages::-webkit-scrollbar-thumb {
+  background-color: var(--deep-blue);
+  border-radius: 10px;
+}
+
+.nova-message-wrapper {
+  max-width: 85%;
+  display: flex;
+  flex-direction: column;
+}
+
+.nova-message-wrapper.nova {
+  align-self: flex-start;
+}
+
+.nova-message-wrapper.user {
+  align-self: flex-end;
+  align-items: flex-end;
+}
+
+.nova-message {
+  padding: 14px 18px;
+  border-radius: 16px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  position: relative;
+}
+
+.nova-message-wrapper.nova .nova-message {
+  background: rgba(27, 47, 74, 0.6);
+  border: 1px solid rgba(212, 175, 55, 0.1);
+  color: var(--cream);
+  border-bottom-left-radius: 4px;
+}
+
+.nova-message-wrapper.user .nova-message {
+  background: var(--gold);
+  color: var(--navy);
+  font-weight: 500;
+  border-bottom-right-radius: 4px;
+}
+
+.nova-time {
+  font-size: 0.7rem;
+  color: var(--steel);
+  margin-top: 6px;
+  opacity: 0.8;
+}
+
+.nova-input-area {
+  padding: 20px 24px;
+  background: rgba(10, 22, 40, 0.5);
+  border-top: 1px solid rgba(212, 175, 55, 0.1);
+  display: flex;
+  gap: 12px;
+}
+
+.nova-input-area input {
+  flex: 1;
+  background: var(--deep-blue);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 12px;
+  padding: 12px 16px;
+  color: var(--cream);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.nova-input-area input:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.1);
+}
+
+.nova-send {
+  width: 44px;
+  height: 44px;
+  background: var(--gold);
+  border: none;
+  border-radius: 12px;
+  color: var(--navy);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.nova-send:hover {
+  background: var(--light-gold);
+  transform: translateY(-2px);
+}
+
+.nova-send svg {
+  width: 20px;
+  height: 20px;
+}
+
+.nova-footer {
+  padding: 12px;
+  text-align: center;
+  font-size: 0.65rem;
+  color: var(--steel);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: var(--navy);
+  border-top: 1px solid rgba(212, 175, 55, 0.05);
+}
+
+/* Typing Indicator */
+.typing {
+  display: flex;
+  gap: 4px;
+  padding: 14px 20px !important;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  background: var(--steel);
+  border-radius: 50%;
+  animation: typing-dots 1.4s infinite;
+  opacity: 0.3;
+}
+
+.dot:nth-child(2) { animation-delay: 0.2s; }
+.dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes typing-dots {
+  0%, 100% { transform: translateY(0); opacity: 0.3; }
+  50% { transform: translateY(-4px); opacity: 1; }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .nova-window {
+    width: calc(100vw - 40px);
+    height: calc(100vh - 120px);
+    bottom: 20px;
+    right: 20px;
+  }
+  
+  .nova-trigger {
+    padding: 10px 20px;
+  }
+  
+  .nova-label {
+    display: none;
+  }
+}

@@ -1,0 +1,142 @@
+/* Kinetic Sidebar Navigation */
+.sidebar-nav {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%) translateX(calc(100% - 45px));
+  z-index: 5000;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 80px 30px 60px; /* More top padding for static label */
+  background: rgba(10, 22, 40, 0.4);
+  backdrop-filter: blur(25px);
+  border-top-left-radius: 40px;
+  border-bottom-left-radius: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0.6;
+}
+
+.sidebar-nav:hover {
+  transform: translateY(-50%) translateX(0);
+  background: rgba(10, 22, 40, 0.9);
+  border-color: rgba(212, 175, 55, 0.2);
+  opacity: 1;
+}
+
+/* Static Header Label - Above the dots */
+.nav-header-label {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.5rem;
+  font-weight: 900;
+  letter-spacing: 3px;
+  color: var(--gold);
+  white-space: nowrap;
+  opacity: 0.4;
+  transition: all 0.4s ease;
+}
+
+.sidebar-nav:hover .nav-header-label {
+  opacity: 1;
+  letter-spacing: 5px;
+}
+
+/* Sidebar Trigger Label - High Visibility Strip */
+.sidebar-nav::before {
+  content: 'TABLE OF CONTENTS';
+  position: absolute;
+  left: 12px;
+  top: 55%; /* Adjusted for top label */
+  transform: translateY(-50%) rotate(-90deg);
+  font-size: 0.6rem;
+  font-weight: 900;
+  letter-spacing: 5px;
+  color: var(--gold);
+  white-space: nowrap;
+  opacity: 0.8;
+  transition: all 0.4s ease;
+}
+
+.sidebar-nav:hover::before {
+  opacity: 0;
+  left: -30px;
+}
+
+.nav-dot {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+  height: 24px;
+}
+
+/* Hollow Orbs */
+.nav-dot .dot-icon {
+  width: 10px;
+  height: 10px;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  background: transparent;
+  border-radius: 50%;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 2;
+}
+
+.nav-label {
+  font-size: 0.65rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: rgba(255, 255, 255, 0.1);
+  transition: all 0.4s ease;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* Connection Dash */
+.nav-dot::before {
+  content: '';
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0;
+}
+
+/* Active Section */
+.nav-dot.active .dot-icon {
+  background: var(--gold);
+  border-color: var(--gold);
+  transform: scale(1.4);
+  box-shadow: 0 0 25px rgba(212, 175, 55, 0.5);
+}
+
+.nav-dot.active .nav-label {
+  color: var(--gold);
+  opacity: 1;
+  font-weight: 700;
+  text-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+  transform: translateX(-5px);
+}
+
+.nav-dot.active::before {
+  width: 60px;
+  opacity: 1;
+  right: calc(100% + 20px);
+}
+
+.sidebar-nav:hover .nav-label {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.sidebar-nav:hover .nav-dot.active .nav-label {
+  color: var(--gold);
+}
