@@ -49,7 +49,7 @@ function App() {
 
   useEffect(() => {
     const timer = setInterval(() => setCurrentTime(new Date()), 1000);
-    const observerOptions = { threshold: 0.4, rootMargin: "0px" };
+    const observerOptions = { threshold: 0.2, rootMargin: "-10% 0px -60% 0px" };
     const fadeInObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -127,6 +127,9 @@ function App() {
               </div>
             </div>
             <div className="header-actions">
+              <a href="https://dte-84.github.io/DTE-Solutions-Hub/" className="action-link-text mr-4 hidden md:block">
+                Back to Nexus
+              </a>
               <a href="tel:+12176539445" className="action-icon-btn" title="Call Direct">
                 <Phone size={16} />
               </a>
