@@ -615,6 +615,26 @@ h2 {
   gap: 15px;
 }
 
+.link-group a,
+.link-group button {
+  color: var(--steel);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all 0.3s;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+  font-family: "DM Sans", sans-serif;
+}
+
+.link-group a:hover,
+.link-group button:hover {
+  color: var(--gold);
+  transform: translateX(5px);
+}
+
 .social-grid {
   display: flex;
   gap: 15px;

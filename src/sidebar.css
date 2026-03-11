@@ -76,6 +76,10 @@
   height: 24px;
 }
 
+.nav-dot:focus {
+  outline: none;
+}
+
 /* Hollow Orbs */
 .nav-dot .dot-icon {
   width: 10px;

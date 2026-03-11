@@ -146,6 +146,10 @@ function App() {
             key={item.id}
             href={`#${item.id}`} 
             className={`nav-dot ${activeSection === item.id ? 'active' : ''}`}
+            onClick={(e) => {
+              e.preventDefault();
+              document.getElementById(item.id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }}
           >
             <span className="nav-label">{item.label}</span>
             <div className="dot-icon"></div>
