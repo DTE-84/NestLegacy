@@ -49,7 +49,7 @@ function App() {
 
   useEffect(() => {
     const timer = setInterval(() => setCurrentTime(new Date()), 1000);
-    const observerOptions = { threshold: 0.2, rootMargin: "-10% 0px -60% 0px" };
+    const observerOptions = { threshold: 0.3, rootMargin: "-20% 0px -50% 0px" };
     const fadeInObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -369,6 +369,7 @@ function App() {
         isOpen={isModalOpen} 
         onClose={() => setIsModalOpen(false)} 
         source={modalSource}
+        onBackdropClick={() => setIsModalOpen(false)}
       />
     </div>
   );
